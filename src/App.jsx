@@ -11,30 +11,23 @@ import Dashboard from "./componentes/dashboard/dashboard";
 import PiePag from "./componentes/PiePag";
 
 import { useSelector, useDispatch } from 'react-redux'
-import { decrement, increment } from './state/slicers/counter'
+import { getEventos } from './state/slicers/eventos'
 
 const App = () => {
 
-  const count = useSelector((state) => state.counter.value)
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  
+  useEffect(()=>{
+    dispatch(getEventos());
+  },[]);
+
+  const eventos = useSelector((state) => state.eventos.eventos);
+
+  const cosas = ()=>{ return eventos.length == 0 ? "adsf" :  eventos[0]._id }
 
   return (
     <div>
-    <div>
-      <button
-        aria-label="Increment value"
-        onClick={() => dispatch(increment())}
-      >
-        Increment
-      </button>
-      <span>{count}</span>
-      <button
-        aria-label="Decrement value"
-        onClick={() => dispatch(decrement())}
-      >
-        Decrement
-      </button>
-    </div>
+      {cosas()}
   </div>
     // <div className="px-32 pb-10 bg-slate-200 font-principal">
     //   <Navbar />
