@@ -1,11 +1,9 @@
 import axios from 'axios';
 
-const url = 'http://localhost:3000/';
+const url = 'http://localhost:5000/talleres/';
 
-export const fetchProductos = () => axios.get(url+'PedidosComedorProductos/');
-
-
-export const createPost = (newPost) => axios.post(url, newPost);
-export const likePost = (id) => axios.patch(`${url}/${id}/likePost`);
-export const updatePost = (id, updatedPost) => axios.patch(`${url}/${id}`, updatedPost);
-export const deletePost = (id) => axios.delete(`${url}/${id}`);
+export const ApigetTalleres = () => axios.get(url);
+export const ApicreateTalleres = (newTaller) => axios.post(url, newTaller);
+export const ApigetTaller = (id) => axios.get(`${url}/${id}`);
+export const ApiupdateTalleres = (id, updatedTaller) => axios.patch(`${url}/${id}`, updatedTaller);
+export const ApideleteTalleres = (id) => axios.delete(`${url}/${id}`);

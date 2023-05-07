@@ -1,54 +1,54 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import {
-  ApigetEventos,
-  ApideleteEventos,
-  ApiupdateEventos,
-  ApicreateEventos,
-} from "../../api/eventos";
+  ApigetTalleres,
+  ApideleteTalleres,
+  ApiupdateTalleres,
+  ApicreateTalleres,
+} from "../../api/taller";
 
 //este es el objeto que se declara en el slicer despues solo hay
 //re inicializaciones de este mismo objeto
 const initialState = {
-  eventos: [],
+  talleres: [],
 };
 
 //por cada accion que requiera el thunk se hace una funcion con createAsyncThunk
 //y la logica que hace el llamado async despues se exporta la funcion en
 //cuestion y se integra al reducer mediante el builder
-export const getEventos = createAsyncThunk(
-  "evento/get", 
+export const getTalleres = createAsyncThunk(
+  "taller/get", 
   async () => {
-  const response = await ApigetEventos();
+  const response = await ApigetTalleres();
   console.log("llamado a la API");
   return response.data;
 });
 
-export const createEventos = createAsyncThunk(
-  "evento/create",
-  async (evento) => {
-    const newEvento = await ApicreateEventos(evento);
+export const createTalleres = createAsyncThunk(
+  "Taller/create",
+  async (taller) => {
+    const newTaller = await ApicreateTalleres(taller);
     console.log("llamado a la API");
-    return newEvento.data;
+    return newTaller.data;
   }
 );
 
-export const updateEventos = createAsyncThunk(
-  "evento/update",
-  async (updatedEvento) => {
+export const updateTalleres = createAsyncThunk(
+  "Tallere/update",
+  async (updatedTaller) => {
     console.log("llamado a la API");
-    const [id, evento] = updatedEvento; 
-   const newEvento = await ApiupdateEventos(id, evento);
-    return { id, newEvento };
+    const [id, taller] = updatedTaller; 
+   const newTaller = await ApiupdateTalleres(id, taller);
+    return { id, newTaller };
   }
 );
-export const deleteEventos = createAsyncThunk("evento/delete", async (id) => {
-  await ApideleteEventos(id);
+export const deleteTalleres = createAsyncThunk("Tallere/delete", async (id) => {
+  await ApideleteTalleres(id);
   console.log("llamado a la API");
   return id;
 });
 
-export const eventosSlice = createSlice({
-  name: "eventos",
+export const talleresSlice = createSlice({
+  name: "talleres",
   initialState,
   reducers: {
     //aca van los reducers regulares, se escriben como una mutacion del estado
@@ -62,29 +62,29 @@ export const eventosSlice = createSlice({
       //aca se hacen los add case para cada posible estado que adopten funciones thunk
       //pueden ser varios, los principales son .fulfilled, .pending y .rejected
       //en este caso vamos a hacer nada mas fulfilled
-      .addCase(getEventos.fulfilled, (state, action) => {
-        state.eventos = action.payload;
+      .addCase(getTalleres.fulfilled, (state, action) => {
+        state.talleres = action.payload;
       })
-      .addCase(createEventos.fulfilled, (state, action) => {
-        state.eventos = [...state.eventos, action.payload];
+      .addCase(createTalleres.fulfilled, (state, action) => {
+        state.talleres = [...state.talleres, action.payload];
       })
-      .addCase(updateEventos.fulfilled, (state, action) => {
-        state.eventos.find((evento, indice) => {
-          if (evento._id == action.payload.id) {
-            state.eventos[indice] = action.payload.newEvento.data;
+      .addCase(updateTalleres.fulfilled, (state, action) => {
+        state.talleres.find((taller, indice) => {
+          if (taller._id == action.payload.id) {
+            state.talleres[indice] = action.payload.newTaller.data;
             // return true;
           }
         });
       })
-      .addCase(deleteEventos.fulfilled, (state, action) => {
+      .addCase(deleteTalleres.fulfilled, (state, action) => {
         let aux;
-        state.eventos.find((evento, indice) => {
-          if (action.payload.id === evento.id) {
+        state.talleres.find((taller, indice) => {
+          if (action.payload.id === taller.id) {
             aux = indice;
             // return true;
           }
         });
-        state.eventos.splice(aux, 1);
+        state.talleres.splice(aux, 1);
       });
   },
 });
@@ -92,4 +92,4 @@ export const eventosSlice = createSlice({
 //estos son los export de las acciones regulares no thunk en este caso no tenemos ninguna
 // export const { increment, } = counterSlice.actions
 
-export default eventosSlice.reducer;
+export default talleresSlice.reducer;

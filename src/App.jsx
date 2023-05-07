@@ -11,23 +11,48 @@ import Dashboard from "./componentes/dashboard/dashboard";
 import PiePag from "./componentes/PiePag";
 
 import { useSelector, useDispatch } from 'react-redux'
-import { getEventos } from './state/slicers/eventos'
+import { getTalleres,createTalleres,deleteTalleres,updateTalleres } from './state/slicers/talleres'
 
 const App = () => {
+
+  let objeto = {
+    descripcion: "cosas cosas cosas ",
+    nombre: "cosas cosas cosas cosas ",
+    // fecha:"asdf",
+    // URL:"asdf",
+    // URLthumbnail:"asdf",
+  }
 
   const dispatch = useDispatch();
   
   useEffect(()=>{
-    dispatch(getEventos());
+    dispatch(getTalleres());
   },[]);
 
-  const eventos = useSelector((state) => state.eventos.eventos);
+  const Talleres = useSelector((state) => state.talleres.talleres);
 
-  const cosas = ()=>{ return eventos.length == 0 ? "adsf" :  eventos[0]._id }
+  const cosas = ()=>{ return Talleres.length == 0 ? "" :  Talleres.map((taller)=>
+  <div key={taller._id}>{taller._id}      
+  <button onClick={() => dispatch(deleteTalleres(taller._id))}>
+  delete
+  </button>
+  </div>) }
 
   return (
     <div>
       {cosas()}
+      <button
+          // aria-label="Decrement value"
+          onClick={() => dispatch(createTalleres(objeto))}
+        >
+          create
+        </button>
+      <button
+          // aria-label="Decrement value"
+          onClick={() => dispatch(updateTalleres(['64441aebf01505194503672b', objeto]))}
+        > 
+          update
+        </button>
   </div>
     // <div className="px-32 pb-10 bg-slate-200 font-principal">
     //   <Navbar />

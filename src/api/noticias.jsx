@@ -1,11 +1,9 @@
 import axios from 'axios';
 
-const url = 'http://localhost:3000/';
+const url = 'http://localhost:5000/noticias/';
 
-export const fetchProductos = () => axios.get(url+'PedidosComedorProductos/');
-
-
-export const createPost = (newPost) => axios.post(url, newPost);
-export const likePost = (id) => axios.patch(`${url}/${id}/likePost`);
-export const updatePost = (id, updatedPost) => axios.patch(`${url}/${id}`, updatedPost);
-export const deletePost = (id) => axios.delete(`${url}/${id}`);
+export const ApigetNoticias = () => axios.get(url);
+export const ApicreateNoticias = (newNoticia) => axios.post(url, newNoticia);
+export const ApigetNoticia = (id) => axios.get(`${url}${id}`);
+export const ApiupdateNoticias = (id, updatedNoticia) => axios.patch(`${url}${id}`, updatedNoticia);
+export const ApideleteNoticias = (id) => axios.delete(`${url}${id}`);
