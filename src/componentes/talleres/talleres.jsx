@@ -1,9 +1,20 @@
-import React from 'react'
+import { useState, useRef, useEffect } from "react";
+import { useSelector } from "react-redux";
+
+import Barra from "./barra";
+import Taller from "./taller";
 
 const Talleres = () => {
-  return (
-    <div>Talleres</div>
-  )
-}
+  const talleres = useSelector((state) => state.talleres.talleres);
 
-export default Talleres
+  return (
+    <div>
+      <div className="flex">
+        <Barra />
+        <Taller />
+      </div>
+    </div>
+  );
+};
+
+export default Talleres;
