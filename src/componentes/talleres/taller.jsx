@@ -10,10 +10,12 @@ const Taller = () => {
     useEffect(()=>{
         var urlParams = new URLSearchParams(window.location.search);
         const id = urlParams.get("id");
+
+        console.log(id);
+
+        setTaller( id !=0 ? (talleres.find((taller)=> taller._id == id)) : (talleres[0]))
     
-        setTaller(id ? (talleres.find((taller)=> taller._id == id)) : (talleres[0]))
-        console.log(taller);
-    },[])
+      },[talleres])
 
     return (
     <div className="grow">
