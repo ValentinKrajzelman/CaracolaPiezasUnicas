@@ -14,19 +14,19 @@ const Botones = () => {
     {
     name: 'Noticias',
     indice: 0,
-    href: "/dashboard/?tipo=noticias",
+    href: "/dashboard/?tipo=0",
     current: false,
   },
     {
     name: 'Talleres',
     indice: 1,
-    href: "/dashboard/?tipo=talleres",
+    href: "/dashboard/?tipo=1",
     current: false,
   },
     {
     name: 'Eventos',
     indice: 2,
-    href: "/dashboard/?tipo=eventos",
+    href: "/dashboard/?tipo=2",
     current: false,
   },
 ] 

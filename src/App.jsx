@@ -5,11 +5,10 @@ import { Route, Routes } from "react-router-dom";
 import Navbar from "./componentes/navbar";
 import Inicio from "./componentes/inicio/inicio";
 import Eventos from "./componentes/eventos/eventos";
-import Talleres from "./componentes/talleres/talleres";
+import Talleres from "./componentes/talleres/index";
 import Noticias from "./componentes/noticias/noticias";
-import Dashboard from "./componentes/dashboard/dashboard";
+import Dashboard from "./componentes/dashboard/index";
 import PiePag from "./componentes/PiePag";
-import Modal from "./componentes/dashboard/Modal";
 
 import { useSelector, useDispatch } from "react-redux";
 
@@ -33,7 +32,7 @@ const App = () => {
         <Route path="/eventos/*" element={<Eventos />}></Route>
         <Route path="/talleres/*" element={<Talleres />}></Route>
         <Route path="/noticias/*" element={<Noticias />}></Route>
-        <Route path="/dashboard/" element={<Dashboard />}></Route>
+        <Route path="/dashboard/*" element={<Dashboard />}></Route>
       </Routes>
       <PiePag />
     </div>
