@@ -31,7 +31,9 @@ const Seleccion = () => {
 
   useEffect(() => {
     var urlParams = new URLSearchParams(window.location.search);
-    setCategoria(parseInt(urlParams.get("tipo")));
+    if(urlParams.get("tipo")){
+      setCategoria(parseInt(urlParams.get("tipo")));
+    }
   }, [location]);
 
   return (
