@@ -31,7 +31,11 @@ const Seleccion = () => {
 
   useEffect(() => {
     var urlParams = new URLSearchParams(window.location.search);
+<<<<<<< HEAD
     if(urlParams.get("tipo")){
+=======
+    if (urlParams.get("tipo")) {
+>>>>>>> 2a6d6c84fc1a0baed1fa22a7447fc5fd62db1dfb
       setCategoria(parseInt(urlParams.get("tipo")));
     }
   }, [location]);
@@ -138,7 +142,7 @@ const Seleccion = () => {
                           )}
                         </Menu.Item>
                         <Menu.Item>
-                        {/* aca hace falta que este boton haga el dispatch de delete en el id que le corresponda */}
+                          {/* aca hace falta que este boton haga el dispatch de delete en el id que le corresponda */}
                           {({ active }) => (
                             <button
                               className={classNames(

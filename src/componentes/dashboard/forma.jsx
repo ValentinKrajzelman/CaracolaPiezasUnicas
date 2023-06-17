@@ -1,6 +1,9 @@
-import React from 'react'
+import React, { useRef } from 'react';
+import { Editor } from '@tinymce/tinymce-react';
 
-      {/* aca dejo el snippet que necesito para cargar imagenes en el dashboard 
+const apikey = import.meta.env.VITE_API_KEY_TINY;
+
+{/* aca dejo el snippet que necesito para cargar imagenes en el dashboard 
       <form onSubmit={() => {}}>
         <label>First name:</label>
         <input type="text" id="fname" name="fname" value="John" />
@@ -16,9 +19,60 @@ import React from 'react'
         <input type="submit" value="Submit" />
       </form> */}
 
-const Forma = () => {
+const Forma = ({ estado, cerrar, current }) => {
+
+  const editorRef = useRef(null);
+  const log = () => {
+    if (editorRef.current) {
+      console.log(editorRef.current.getContent());
+    }
+  };
+
   return (
-    <div>Forma</div>
+    <div>
+      <Editor
+        apiKey={apikey}
+        onInit={(evt, editor) => editorRef.current = editor}
+        initialValue="<p>This is the initial content of the editor.</p>"
+        init={{
+          height: 500,
+          menubar: false,
+          plugins: [
+            'advlist', 'autolink', 'lists', 'link', 'image', 'charmap', 'preview',
+            'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
+            'insertdatetime', 'media', 'table', 'code', 'help', 'wordcount'
+          ],
+          toolbar: 'undo redo | blocks | ' +
+            'bold italic forecolor | alignleft aligncenter ' +
+            'alignright alignjustify | bullist numlist outdent indent | ' +
+            'removeformat | help',
+          content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
+        }}
+      />
+      <button onClick={log}>Log editor content</button>
+
+      {/* botones para salir del modal */}
+      <div className="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
+        <button
+          type="button"
+          className="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"
+          onClick={() => {
+            cerrar();
+          }}
+        >
+          Guardar
+        </button>
+        <button
+          type="button"
+          className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
+          onClick={() => {
+            cerrar();
+          }}
+        >
+          Cancelar
+        </button>
+      </div>
+    </div>
   )
 }
 
@@ -27,7 +81,7 @@ export default Forma;
 // dejo el snippet de abajo para tener de referencia el material para este componente
 
 // estos son dos hooks usestate sirve para poner una serie de variable en el state
-// del componente, useEffect sirve para definir un efecto, es decir una funcion 
+// del componente, useEffect sirve para definir un efecto, es decir una funcion
 // que se triggerea cuando se produce un cambio en componentes especificos
 // import React, { useState, useEffect } from 'react';
 // estos son componentes de material ui
@@ -48,7 +102,7 @@ export default Forma;
 //   declaracion del state
 //   const [postData, setPostData] = useState({ creator: '', title: '', message: '', tags: '', selectedFile: '' });
 
-//   lo de abajo define una variable usando useselector al que se le pasa una funcion 
+//   lo de abajo define una variable usando useselector al que se le pasa una funcion
 //   esta funcion hace una operacion ternaria (ternary operator) donde si el current id
 //   es falsy (no esta declarado) busca el current id entre todos los posts que se encuentran
 //   en el state (que es el argumento de useSelector)
@@ -57,7 +111,7 @@ export default Forma;
 //   const dispatch = useDispatch();
 //   const classes = useStyles();
 
-//   useEffect reproduce el codigo dentro del bloque cada vez que las variables que tiene 
+//   useEffect reproduce el codigo dentro del bloque cada vez que las variables que tiene
 //   como segundo parametro cambian
 //   useEffect(() => {
 //     if (post) setPostData(post);
@@ -89,7 +143,7 @@ export default Forma;
 //     <Paper className={classes.paper}>
 //       <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
 //       para cada uno de los textfields de abajo se hace una actulizacion del estado cada vez que cambian
-//       de esta manera el estado postData refleja el contenido de la form, a su vez la form se renderiza con 
+//       de esta manera el estado postData refleja el contenido de la form, a su vez la form se renderiza con
 //       los valores del estado
 //         <Typography variant="h6">{currentId ? `Editing "${post.title}"` : 'Creating a Memory'}</Typography>
 //         <TextField name="creator" variant="outlined" label="Creator" fullWidth value={postData.creator} onChange={(e) => setPostData({ ...postData, creator: e.target.value })} />
