@@ -20,7 +20,11 @@ const Seleccion = () => {
   const [categoria, setCategoria] = useState(0);
   const [arr, setArr] = useState([]);
 
+  //se usa para hacer toggle abierto/cerrado del modal
   const [estado, setEstado] = useState(false);
+  //current es el id con el que esta trabajando el modal
+  //si es cero el boton guardar crea un elemento nuevo
+  //si es diferente a cero esta editando uno preexistente
   const [current, setCurrent] = useState(0);
 
   let location = useLocation();
@@ -31,11 +35,7 @@ const Seleccion = () => {
 
   useEffect(() => {
     var urlParams = new URLSearchParams(window.location.search);
-<<<<<<< HEAD
-    if(urlParams.get("tipo")){
-=======
     if (urlParams.get("tipo")) {
->>>>>>> 2a6d6c84fc1a0baed1fa22a7447fc5fd62db1dfb
       setCategoria(parseInt(urlParams.get("tipo")));
     }
   }, [location]);
