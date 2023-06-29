@@ -66,7 +66,7 @@ const Seleccion = () => {
                 type="button"
                 className="relative block h-full w-full rounded-lg border-2 border-dashed border-gray-300 p-12 text-center hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                 onClick={() => {
-                  setCurrent(0);
+                  setCurrent({});
                   setEstado(true);
                 }}
               >
@@ -128,7 +128,7 @@ const Seleccion = () => {
                           {({ active }) => (
                             <button
                               onClick={() => {
-                                setCurrent(item._id);
+                                setCurrent(item);
                                 setEstado(true);
                               }}
                               className={classNames(
@@ -151,7 +151,7 @@ const Seleccion = () => {
                               )}
                             >
                               Eliminar
-                              <span className="sr-only">, {item.name}</span>
+                              <span className="sr-only">, {item.nombre}</span>
                             </button>
                           )}
                         </Menu.Item>

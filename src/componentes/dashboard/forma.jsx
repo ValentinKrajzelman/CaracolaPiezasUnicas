@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import { Editor } from "@tinymce/tinymce-react";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { PhotoIcon } from "@heroicons/react/24/solid";
 
@@ -13,7 +13,7 @@ const cloud_name = import.meta.env.VITE_CLOUD_NAME;
 
 const Forma = ({ estado, cerrar, current }) => {
   const editorRef = useRef(null);
-
+  
   // asi es como se accede al contenido del editor de texto
   // const log = () => {
   //   if (editorRef.current) {
@@ -24,7 +24,7 @@ const Forma = ({ estado, cerrar, current }) => {
   const [image, setImage] = useState("");
   const [url, setUrl] = useState(null);
   const [titulo, setTitulo] = useState("");
-
+  const [contenido, setContenido] = useState(current ? current.descripcion : <div></div>);
 
   //medio lo unico que falta de este componente es hacer la interaccion con el state para que 
   //mande este objeto a la api y lo suba, y listo ya estaria, despues hay que hacer otro que 
@@ -142,7 +142,7 @@ const Forma = ({ estado, cerrar, current }) => {
           <Editor
             apiKey={apikey}
             onInit={(evt, editor) => (editorRef.current = editor)}
-            initialValue="<div> </div>"
+            initialValue={current.descripcion}
             init={{
               height: 500,
               menubar: false,
