@@ -7,7 +7,7 @@ import {
 
 import Forma from "./forma";
 
-const Modal = ({ estado, cerrar, current }) => {
+const Modal = ({ estado, cerrar, current, tipo }) => {
 
   if (estado == false) return null;
 
@@ -59,7 +59,9 @@ const Modal = ({ estado, cerrar, current }) => {
 
                 <Forma estado={estado}
                   current={current}
-                  cerrar={cerrar} />
+                  cerrar={cerrar} 
+                  tipo={tipo}
+                  />
 
               </Dialog.Panel>
             </Transition.Child>

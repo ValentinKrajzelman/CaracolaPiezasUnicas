@@ -30,8 +30,8 @@ const Seleccion = () => {
   let location = useLocation();
 
   useEffect(() => {
-    setArr([talleres, eventos, noticias]);
-  }, [talleres, eventos, noticias]);
+    setArr([noticias, eventos, talleres]);
+  }, [talleres, noticias,eventos]);
 
   useEffect(() => {
     var urlParams = new URLSearchParams(window.location.search);
@@ -45,6 +45,7 @@ const Seleccion = () => {
       <Modal
         estado={estado}
         current={current}
+        tipo={categoria}
         cerrar={() => {
           setEstado(false);
         }}
@@ -66,7 +67,7 @@ const Seleccion = () => {
                 type="button"
                 className="relative block h-full w-full rounded-lg border-2 border-dashed border-gray-300 p-12 text-center hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                 onClick={() => {
-                  setCurrent({});
+                  setCurrent(0);
                   setEstado(true);
                 }}
               >

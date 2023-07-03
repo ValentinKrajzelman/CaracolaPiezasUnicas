@@ -26,8 +26,9 @@ export const getNoticias = createAsyncThunk(
 export const createNoticias = createAsyncThunk(
   "noticia/create",
   async (noticia) => {
+    console.log(noticia)
     const newNoticia = await ApicreateNoticias(noticia);
-    console.log("llamado a la API");
+    console.log("llamado a la API desde createNoticias", newNoticia);
     return newNoticia.data;
   }
 );
@@ -66,6 +67,7 @@ export const noticiasSlice = createSlice({
         state.noticias = action.payload;
       })
       .addCase(createNoticias.fulfilled, (state, action) => {
+        console.log(action.payload)
         state.noticias = [...state.noticias, action.payload];
       })
       .addCase(updateNoticias.fulfilled, (state, action) => {
