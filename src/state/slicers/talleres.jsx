@@ -36,8 +36,8 @@ export const updateTalleres = createAsyncThunk(
   "Tallere/update",
   async (updatedTaller) => {
     console.log("llamado a la API");
-    const [id, taller] = updatedTaller; 
-   const newTaller = await ApiupdateTalleres(id, taller);
+    const {id, elemento} = updatedTaller; 
+   const newTaller = await ApiupdateTalleres(id, elemento);
     return { id, newTaller };
   }
 );
@@ -79,7 +79,7 @@ export const talleresSlice = createSlice({
       .addCase(deleteTalleres.fulfilled, (state, action) => {
         let aux;
         state.talleres.find((taller, indice) => {
-          if (action.payload.id === taller.id) {
+          if (action.payload == taller._id) {
             aux = indice;
             // return true;
           }

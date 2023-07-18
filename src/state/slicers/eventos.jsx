@@ -15,9 +15,7 @@ const initialState = {
 //por cada accion que requiera el thunk se hace una funcion con createAsyncThunk
 //y la logica que hace el llamado async despues se exporta la funcion en
 //cuestion y se integra al reducer mediante el builder
-export const getEventos = createAsyncThunk(
-  "evento/get", 
-  async () => {
+export const getEventos = createAsyncThunk("evento/get", async () => {
   const response = await ApigetEventos();
   console.log("llamado a la API");
   return response.data;
@@ -35,9 +33,9 @@ export const createEventos = createAsyncThunk(
 export const updateEventos = createAsyncThunk(
   "evento/update",
   async (updatedEvento) => {
-    console.log("llamado a la API");
-    const [id, evento] = updatedEvento; 
-   const newEvento = await ApiupdateEventos(id, evento);
+    console.log("entro al update eventos", updatedEvento);
+    const { id, elemento } = updatedEvento;
+    const newEvento = await ApiupdateEventos(id, elemento);
     return { id, newEvento };
   }
 );
@@ -79,9 +77,8 @@ export const eventosSlice = createSlice({
       .addCase(deleteEventos.fulfilled, (state, action) => {
         let aux;
         state.eventos.find((evento, indice) => {
-          if (action.payload.id === evento.id) {
+          if (action.payload == evento._id) {
             aux = indice;
-            // return true;
           }
         });
         state.eventos.splice(aux, 1);

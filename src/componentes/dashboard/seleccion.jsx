@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector,useDispatch } from "react-redux";
 import { useLocation, Link } from "react-router-dom";
 
 import { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { EllipsisHorizontalIcon } from "@heroicons/react/20/solid";
+
+import { deleteEventos } from "../../state/slicers/eventos";
+import { deleteNoticias } from "../../state/slicers/noticias";
+import { deleteTalleres } from "../../state/slicers/talleres";
 
 import Modal from "./modal";
 
@@ -13,6 +17,8 @@ function classNames(...classes) {
 }
 
 const Seleccion = () => {
+  const dispatch = useDispatch();
+
   const talleres = useSelector((state) => state.talleres.talleres);
   const eventos = useSelector((state) => state.eventos.eventos);
   const noticias = useSelector((state) => state.noticias.noticias);
@@ -29,8 +35,10 @@ const Seleccion = () => {
 
   let location = useLocation();
 
+  const arrAcciones = [deleteNoticias,deleteTalleres,deleteEventos];
+
   useEffect(() => {
-    setArr([noticias, eventos, talleres]);
+    setArr([noticias, talleres, eventos]);
   }, [talleres, noticias,eventos]);
 
   useEffect(() => {
@@ -146,6 +154,7 @@ const Seleccion = () => {
                           {/* aca hace falta que este boton haga el dispatch de delete en el id que le corresponda */}
                           {({ active }) => (
                             <button
+                            onClick={()=>{dispatch(arrAcciones[categoria](item._id))}}
                               className={classNames(
                                 active ? "bg-gray-50" : "",
                                 "block px-3 py-1 text-sm leading-6 text-gray-900"

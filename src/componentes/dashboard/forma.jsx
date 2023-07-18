@@ -17,33 +17,35 @@ const apikey = import.meta.env.VITE_API_KEY_TINY;
 const preset_name = import.meta.env.VITE_UPLOAD_PRESET;
 const cloud_name = import.meta.env.VITE_CLOUD_NAME;
 
-const Forma = ({ estado, cerrar, current, tipo }) => {
+const Forma = ({ cerrar, current, tipo }) => {
   const editorRef = useRef(null);
   const dispatch = useDispatch();
 
+  //vamos cerrando con esto, lo que necesito es terminar de arreglar la subida de las imagenes,
+  //nada mas deberia subir una imagen cuando se carga desde upload file, y mostrar la imagen URL
+  //cuando se le da a editar, las thumnail solo se muestran en las miniaturas, ademas establecer
+  //el resto de los paths con los arrays de funciones que hice y listo, habria que emprolijar el
+  //codigo, terminar con noticias y eventos y despues
 
-//vamos cerrando con esto, lo que necesito es terminar de arreglar la subida de las imagenes,
-//nada mas deberia subir una imagen cuando se carga desde upload file, y mostrar la imagen URL
-//cuando se le da a editar, las thumnail solo se muestran en las miniaturas, ademas establecer
-//el resto de los paths con los arrays de funciones que hice y listo, habria que emprolijar el
-//codigo, terminar con noticias y eventos y despues 
+  let undfUrl;
 
-  const [image, setImage] = useState(current ? current.url : "");
-  const [url, setUrl] = useState(current ? current.URLthumbnail : null);
+  const [image, setImage] = useState("");
+  const [url, setUrl] = useState(current ? current.URL : undfUrl);
   const [titulo, setTitulo] = useState(current ? current.nombre : "");
-  const [contenido, setContenido] = useState(
-    current ? current.descripcion : <div></div>
-  );
+  // const [contenido, setContenido] = useState(
+  //   current ? current.descripcion : <div></div>
+  // );
 
-  useEffect(()=>{
+  useEffect(() => {
+    if(image){
 
-    const data = new FormData();
-    data.append("file", image);
-    data.append("upload_preset", preset_name);
-    data.append("cloud_name", cloud_name);
-    
-    fetch("https://api.cloudinary.com/v1_1/" + cloud_name + "/image/upload", {
-      method: "POST",
+      const data = new FormData();
+      data.append("file", image);
+      data.append("upload_preset", preset_name);
+      data.append("cloud_name", cloud_name);
+      
+      fetch("https://api.cloudinary.com/v1_1/" + cloud_name + "/image/upload", {
+        method: "POST",
       body: data,
     })
     .then((resp) => resp.json())
@@ -51,20 +53,26 @@ const Forma = ({ estado, cerrar, current, tipo }) => {
       setUrl(data.url);
     })
     .catch((err) => console.log(err));
-  },[image]);
-  
+  }
+  }, [image]);
+
+  console.log(tipo);
 
   const submitHandler = () => {
+    
     let nueElem = {
       URL: url,
       descripcion: editorRef.current.getContent(),
       nombre: titulo,
     };
+
     if (current) {
-      // arrFuncionesUpdate[tipo](nueElem);
+      // dispatch(updateEventos({id:current._id, elemento:nueElem}))
+      dispatch(arrFuncionesUpdate[tipo]({id:current._id, elemento:nueElem}));
     } else {
-      dispatch(createNoticias(nueElem));
-      // arrFuncionesCreate[tipo](nueElem);
+      // dispatch(createEventos({id:current._id, elemento:nueElem}))
+      // dispatch(createNoticias(nueElem));
+      dispatch(arrFuncionesCreate[tipo](nueElem));
     }
   };
 
@@ -78,139 +86,139 @@ const Forma = ({ estado, cerrar, current, tipo }) => {
         <h1>Uploaded image will be displayed here</h1>
         <img src={url} alt="Uploaded" />
       </div> */}
-      <form onSubmit={submitHandler}>
-        {/* titulo */}
-        <div className="py-10">
-          <label
-            htmlFor="username"
-            className="block text-sm font-medium leading-6 text-gray-900"
-          >
-            Titulo
-          </label>
-          <div className="mt-2">
-            <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
-              <input
-                type="text"
-                name="username"
-                id="username"
-                autoComplete="username"
-                className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-                placeholder="Hoy caracola celebra..."
-                value={titulo}
-                onChange={(e) => setTitulo(e.target.value)}
-              />
-            </div>
+      {/* <form onSubmit={submitHandler}> */}
+      {/* titulo */}
+      <div className="py-10">
+        <label
+          htmlFor="username"
+          className="block text-sm font-medium leading-6 text-gray-900"
+        >
+          Titulo
+        </label>
+        <div className="mt-2">
+          <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
+            <input
+              type="text"
+              name="username"
+              id="username"
+              autoComplete="username"
+              className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+              placeholder="Hoy caracola celebra..."
+              value={titulo}
+              onChange={(e) => setTitulo(e.target.value)}
+            />
           </div>
         </div>
+      </div>
 
-        {/* imagen */}
-        <div className="col-span-full pb-10">
-          <label
-            htmlFor="cover-photo"
-            className="block text-sm font-medium leading-6 text-gray-900"
-          >
-            Imagen
-          </label>
-          <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
-            <div className="text-center">
-              {url ? (
-                <img src={url} />
-              ) : (
-                <PhotoIcon
-                  className="mx-auto h-12 w-12 text-gray-300"
-                  aria-hidden="true"
-                />
-              )}
-              <div className="mt-4 flex text-sm leading-6 text-gray-600">
-                <label
-                  htmlFor="file-upload"
-                  className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
-                >
-                  <span>Upload a file</span>
-                </label>
-                <input
-                  id="file-upload"
-                  name="file-upload"
-                  type="file"
-                  className="sr-only"
-                  onChange={(e) => setImage(e.target.files[0])}
-                />
-                <p className="pl-1">or drag and drop</p>
-              </div>
-              <p className="text-xs leading-5 text-gray-600">
-                PNG, JPG, GIF up to 10MB
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* texto */}
+      {/* imagen */}
+      <div className="col-span-full pb-10">
         <label
           htmlFor="cover-photo"
-          className="block text-sm font-medium leading-6 pb-2 text-gray-900"
+          className="block text-sm font-medium leading-6 text-gray-900"
         >
-          Texto
+          Imagen
         </label>
-        <Editor
-          apiKey={apikey}
-          onInit={(evt, editor) => (editorRef.current = editor)}
-          initialValue={current.descripcion}
-          init={{
-            height: 500,
-            menubar: false,
-            plugins: [
-              "advlist",
-              "autolink",
-              "lists",
-              "link",
-              "image",
-              "charmap",
-              "preview",
-              "anchor",
-              "searchreplace",
-              "visualblocks",
-              "code",
-              "fullscreen",
-              "insertdatetime",
-              "media",
-              "table",
-              "code",
-              "help",
-              "wordcount",
-            ],
-            toolbar:
-              "undo redo | blocks | " +
-              "bold italic forecolor | alignleft aligncenter " +
-              "alignright alignjustify | bullist numlist outdent indent | " +
-              "removeformat | help",
-            content_style:
-              "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
-          }}
-        />
-        {/* <button onClick={log}>Log editor content</button> */}
-
-        {/* botones para salir del modal */}
-        <div className="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
-          <button
-            type="button"
-            className="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"
-            onClick={() => {
-              submitHandler();
-            }}
-          >
-            Guardar
-          </button>
-          <button
-            type="button"
-            className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
-            onClick={() => {
-              cerrar();
-            }}
-          >
-            Cancelar
-          </button>
+        <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
+          <div className="text-center">
+            {url ? (
+              <img src={url} />
+            ) : (
+              <PhotoIcon
+                className="mx-auto h-12 w-12 text-gray-300"
+                aria-hidden="true"
+              />
+            )}
+            <div className="mt-4 flex text-sm leading-6 text-gray-600">
+              <label
+                htmlFor="file-upload"
+                className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
+              >
+                <span>Upload a file</span>
+              </label>
+              <input
+                id="file-upload"
+                name="file-upload"
+                type="file"
+                className="sr-only"
+                onChange={(e) => setImage(e.target.files[0])}
+              />
+              <p className="pl-1">or drag and drop</p>
+            </div>
+            <p className="text-xs leading-5 text-gray-600">
+              PNG, JPG, GIF up to 10MB
+            </p>
+          </div>
         </div>
-      </form>
+      </div>
+
+      {/* texto */}
+      <label
+        htmlFor="cover-photo"
+        className="block text-sm font-medium leading-6 pb-2 text-gray-900"
+      >
+        Texto
+      </label>
+      <Editor
+        apiKey={apikey}
+        onInit={(evt, editor) => (editorRef.current = editor)}
+        initialValue={current.descripcion}
+        init={{
+          height: 500,
+          menubar: false,
+          plugins: [
+            "advlist",
+            "autolink",
+            "lists",
+            "link",
+            "image",
+            "charmap",
+            "preview",
+            "anchor",
+            "searchreplace",
+            "visualblocks",
+            "code",
+            "fullscreen",
+            "insertdatetime",
+            "media",
+            "table",
+            "code",
+            "help",
+            "wordcount",
+          ],
+          toolbar:
+            "undo redo | blocks | " +
+            "bold italic forecolor | alignleft aligncenter " +
+            "alignright alignjustify | bullist numlist outdent indent | " +
+            "removeformat | help",
+          content_style:
+            "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
+        }}
+      />
+      {/* <button onClick={log}>Log editor content</button> */}
+
+      {/* botones para salir del modal */}
+      <div className="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
+        <button
+          type="button"
+          className="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"
+          onClick={() => {
+            submitHandler();
+          }}
+        >
+          Guardar
+        </button>
+        <button
+          type="button"
+          className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
+          onClick={() => {
+            cerrar();
+          }}
+        >
+          Cancelar
+        </button>
+      </div>
+      {/* </form> */}
     </div>
   );
 };

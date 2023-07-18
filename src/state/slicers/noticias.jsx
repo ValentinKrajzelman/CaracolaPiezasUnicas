@@ -36,9 +36,9 @@ export const createNoticias = createAsyncThunk(
 export const updateNoticias = createAsyncThunk(
   "Noticia/update",
   async (updatedNoticia) => {
-    console.log("llamado a la API");
-    const [id, noticia] = updatedNoticia; 
-   const newNoticia = await ApiupdateNoticias(id, noticia);
+    console.log("entro al update noticias", updatedNoticia);
+    const {id, elemento} = updatedNoticia; 
+   const newNoticia = await ApiupdateNoticias(id, elemento);
     return { id, newNoticia };
   }
 );
@@ -81,7 +81,7 @@ export const noticiasSlice = createSlice({
       .addCase(deleteNoticias.fulfilled, (state, action) => {
         let aux;
         state.noticias.find((noticia, indice) => {
-          if (action.payload.id === noticia.id) {
+          if (action.payload == noticia._id) {
             aux = indice;
             // return true;
           }
