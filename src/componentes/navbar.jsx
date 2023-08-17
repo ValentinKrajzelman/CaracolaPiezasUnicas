@@ -31,7 +31,7 @@ const Navbarr = () => {
           <AiFillInstagram />
         </a>
       </div>
-      <Navbar fluid={true} rounded={true} className="py-8 bg-transparent">
+      <Navbar fluid={true} rounded={true} className="py-8 bg-opacity-0">
         <Navbar.Brand href="/ ">
           <img src={bannerNavbar} className="mr-3 h-20" alt="Caracola" />
         </Navbar.Brand>

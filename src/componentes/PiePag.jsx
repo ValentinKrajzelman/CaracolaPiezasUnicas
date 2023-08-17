@@ -7,7 +7,7 @@ import bannerNavbar from '../assets/bannerNavbar.png';
 const PiePag = () => {
     return (
         <div>
-            <Footer container={true}>
+            <Footer container={true} className='bg-opacity-0  shadow-none'>
                 <div className="w-full">
                     <div className="grid w-full justify-between sm:flex sm:justify-between md:flex md:grid-cols-1">
                         <div className='min-h-16'>

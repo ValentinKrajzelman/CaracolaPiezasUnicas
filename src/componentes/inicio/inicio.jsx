@@ -4,7 +4,6 @@ import { Accordion, Label, TextInput, Card, Carousel } from "flowbite-react";
 
 import TarjetaCentros from "./tarjetaCentros";
 
-import comoProducimos from "../../assets/comoProducimos.jpg";
 import quienesSomos from "../../assets/quienesSomos.jpg";
 
 const Inicio = () => {
@@ -60,24 +59,16 @@ const Inicio = () => {
   });
 
   return (
-    <div>
+    <div className="relative">
+    <img src></img>
       {/* calesita grande */}
-      {/* hay que experimentar que foto es la que va a quedar mejor en este lugar, si se puede cropear 
-      desde cloudinary */}
-      <div className="flex justify-center py-4">
-        <div className="h-[35rem] w-full">
-          <Carousel>
-            {noticias.length == 0 ? console.log("cargando") : popularNoticias}
-          </Carousel>
-        </div>
-      </div>
-
       <div className="flex flex-col items-center md:flex-row md:justify-between ">
-        {/* calesita chica */}
-        <div className="h-[30rem] w-full md:w-1 pr-5  md:grow">
-          <Carousel>
-            {talleres.length == 0 ? console.log("cargando") : popularTalleres}
-          </Carousel>
+        <div className="flex justify-center py-4">
+          <div className="h-[35rem] w-full">
+            <Carousel>
+              {noticias.length == 0 ? console.log("cargando") : popularNoticias}
+            </Carousel>
+          </div>
         </div>
 
         {/* tarjeta eventos */}
@@ -104,6 +95,8 @@ const Inicio = () => {
         </Card>
       </div>
 
+
+
       {/* quienes somos*/}
       <div className="flex h-56 sm:h-64 xl:h-80 2xl:h-96 ">
         <div>
@@ -118,17 +111,11 @@ const Inicio = () => {
         <img src={quienesSomos} alt="" className="max-h-[100%] p-5" />
       </div>
 
-      <div className="flex flex-row h-56 sm:h-64 xl:h-80 2xl:h-96 ">
-        <img src={comoProducimos} alt="" className="max-h-[100%]" />
-        <div>
-          <div className="text-5xl pt-5 pl-5">como producimos</div>
-          <div className="text-xl pt-5 pl-5">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aperiam
-            veritatis exercitationem suscipit animi provident quibusdam
-            recusandae repellat culpa, quos beatae modi, ipsa natus obcaecati.
-            Tenetur similique molestiae vel esse dolores?
-          </div>
-        </div>
+      {/* calesita chica */}
+      <div className="h-[30rem] w-full  pr-5 ">
+        <Carousel>
+          {talleres.length == 0 ? console.log("cargando") : popularTalleres}
+        </Carousel>
       </div>
 
       {/* centros */}
@@ -145,7 +132,7 @@ const Inicio = () => {
       </div>
 
       {/* FAQ */}
-      <div>
+      {/* <div>
         <Accordion alwaysOpen={true}>
           <Accordion.Panel>
             <Accordion.Title>What is Flowbite?</Accordion.Title>
@@ -231,7 +218,7 @@ const Inicio = () => {
             </Accordion.Content>
           </Accordion.Panel>
         </Accordion>
-      </div>
+      </div> */}
     </div>
   );
 };
