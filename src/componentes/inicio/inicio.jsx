@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { Accordion, Label, TextInput, Card, Carousel } from "flowbite-react";
 
 import TarjetaCentros from "./tarjetaCentros";
+import CTA from "./CTA";
 
 import quienesSomos from "../../assets/quienesSomos.jpg";
 
@@ -60,7 +61,7 @@ const Inicio = () => {
 
   return (
     <div className="relative">
-    <img src></img>
+      <CTA />
       {/* calesita grande */}
       <div className="flex flex-col items-center md:flex-row md:justify-between ">
         <div className="flex justify-center py-4">
@@ -94,8 +95,6 @@ const Inicio = () => {
           </div>
         </Card>
       </div>
-
-
 
       {/* quienes somos*/}
       <div className="flex h-56 sm:h-64 xl:h-80 2xl:h-96 ">

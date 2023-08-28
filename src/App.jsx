@@ -25,7 +25,7 @@ const App = () => {
   }, []);
 
   return (
-    <div className="pb-10 bg-slate-50 font-principal">
+    <div className="pb-10 bg-[#F7F5DD] font-principal">
       <Navbar />
       <Routes>
         <Route path="/" element={<Inicio />}></Route>

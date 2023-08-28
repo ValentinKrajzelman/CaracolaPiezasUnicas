@@ -1,49 +1,39 @@
 import React from "react";
 import { AiFillFacebook, AiFillInstagram } from "react-icons/ai";
 import { Navbar } from "flowbite-react";
+import { Link } from "react-router-dom";
 
 import bannerNavbar from "../assets/bannerNavbar.png";
-// import { useDispatch, useSelector } from "react-redux";
+
+const styleLink = "text-xl  font-medium px-3 border-2 border-transparent hover:border-black hover:bg-[#9BDEAC] hover:underline";
 
 const Navbarr = () => {
-  // const eventos = useSelector((state)=>state.eventos);
-
-  // const selectorcontroller = ()=>{
-  //   console.log(eventos);
-  // }
   return (
-    <div>
-      {/* <button onClick={selectorcontroller}>aca!</button> */}
-      <div className="border-b-[1px] border-solid border-black flex justify-end px-2">
-        {" "}
-        <a
-          className="text-blue-700 text-2xl"
-          target="_blank"
-          href="https://www.facebook.com/"
-        >
-          <AiFillFacebook />
-        </a>
-        <a
-          className="text-rose-500 text-2xl"
-          target="_blank"
-          href="https://www.instagram.com/"
-        >
-          <AiFillInstagram />
-        </a>
+    <div className="">
+      <div className="flex flex-row items-center pl-24 py-10">
+        <div>
+          <Link to="/">
+            <img src={bannerNavbar} className="h-24" alt="Caracola" />
+          </Link>
+        </div>
+          <div className="flex justify-between w-full pl-28 pr-16">
+            <Link className={styleLink} to="/talleres/?id=0">
+              Talleres
+            </Link>
+            <Link className={styleLink} to="/noticias/?id=0">
+              Noticias
+            </Link>
+            <Link className={styleLink} to="/eventos/?id=0">
+              Eventos
+            </Link>
+            <Link className={styleLink} to="/nosotros">
+              Nosotros
+            </Link>
+            <Link className={styleLink} to="/contacto">
+              Contacto
+            </Link>
+          </div>
       </div>
-      <Navbar fluid={true} rounded={true} className="py-8 bg-opacity-0">
-        <Navbar.Brand href="/ ">
-          <img src={bannerNavbar} className="mr-3 h-20" alt="Caracola" />
-        </Navbar.Brand>
-        <Navbar.Toggle />
-        <Navbar.Collapse>
-          <Navbar.Link href="/talleres/?id=0">Talleres</Navbar.Link>
-          <Navbar.Link href="/noticias/?id=0">Noticias</Navbar.Link>
-          <Navbar.Link href="/eventos/?id=0">Eventos</Navbar.Link>
-          <Navbar.Link href="/nosotros">Nosotros</Navbar.Link>
-          <Navbar.Link href="/contacto">Contacto</Navbar.Link>
-        </Navbar.Collapse>
-      </Navbar>
     </div>
   );
 };
