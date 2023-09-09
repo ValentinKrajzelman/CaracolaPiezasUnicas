@@ -21,12 +21,6 @@ const Forma = ({ cerrar, current, tipo }) => {
   const editorRef = useRef(null);
   const dispatch = useDispatch();
 
-  //vamos cerrando con esto, lo que necesito es terminar de arreglar la subida de las imagenes,
-  //nada mas deberia subir una imagen cuando se carga desde upload file, y mostrar la imagen URL
-  //cuando se le da a editar, las thumnail solo se muestran en las miniaturas, ademas establecer
-  //el resto de los paths con los arrays de funciones que hice y listo, habria que emprolijar el
-  //codigo, terminar con noticias y eventos y despues
-
   let undfUrl;
 
   const [image, setImage] = useState("");
@@ -37,29 +31,27 @@ const Forma = ({ cerrar, current, tipo }) => {
   // );
 
   useEffect(() => {
-    if(image){
-
+    if (image) {
       const data = new FormData();
       data.append("file", image);
       data.append("upload_preset", preset_name);
       data.append("cloud_name", cloud_name);
-      
+
       fetch("https://api.cloudinary.com/v1_1/" + cloud_name + "/image/upload", {
         method: "POST",
-      body: data,
-    })
-    .then((resp) => resp.json())
-    .then((data) => {
-      setUrl(data.url);
-    })
-    .catch((err) => console.log(err));
-  }
+        body: data,
+      })
+        .then((resp) => resp.json())
+        .then((data) => {
+          setUrl(data.url);
+        })
+        .catch((err) => console.log(err));
+    }
   }, [image]);
 
   console.log(tipo);
 
   const submitHandler = () => {
-    
     let nueElem = {
       URL: url,
       descripcion: editorRef.current.getContent(),
@@ -68,7 +60,9 @@ const Forma = ({ cerrar, current, tipo }) => {
 
     if (current) {
       // dispatch(updateEventos({id:current._id, elemento:nueElem}))
-      dispatch(arrFuncionesUpdate[tipo]({id:current._id, elemento:nueElem}));
+      dispatch(
+        arrFuncionesUpdate[tipo]({ id: current._id, elemento: nueElem })
+      );
     } else {
       // dispatch(createEventos({id:current._id, elemento:nueElem}))
       // dispatch(createNoticias(nueElem));

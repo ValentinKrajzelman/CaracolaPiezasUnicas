@@ -11,8 +11,8 @@ const CTA = () => {
     <div className="h-[50rem]">
       <div className="relative h-full w-full overflow-hidden max-w-[100rem]">
         <div>
-          <div className="absolute border-2 border-black top-[10rem] z-[5] left-[11rem] bg-[#EF7E98] h-[19rem] w-[150rem] rotate-[4.59deg]">
-            <div className="text-[3.5rem] leading-[3.5rem] p-2 w-[35rem]">
+          <div className="absolute border-2 border-black top-[10rem] z-[5] left-[11rem] bg-[#EF7E98] pl-[4rem] pt-[1rem] h-[19rem] w-[150rem] rotate-[4.59deg]">
+            <div className="text-[3rem] leading-[3rem] p-2 w-[26rem]">
               Caracola, <u>piezas unicas</u> hechas por <u> gente unica</u>.
             </div>
             <div className="font-secundario text-lg p-2 w-[30rem]">
@@ -67,7 +67,7 @@ const CTA = () => {
         <div className="absolute w-[37rem] z-[0]">
           <div className="relative">
             <img
-              className="custom-spin absolute z-20 top-[0.5rem] left-[0.17rem] h-[32rem]"
+              className="custom-spin absolute z-20 top-[5.5rem] left-[0.17rem] h-[28rem]"
               src={SolAmarillo}
             ></img>
           </div>
