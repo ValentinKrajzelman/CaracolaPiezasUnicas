@@ -26,11 +26,8 @@ const Navbarr = () => {
             <Link className={styleLink} to="/eventos/?id=0">
               Eventos
             </Link>
-            <Link className={styleLink} to="/nosotros">
+            <Link className={styleLink} to="/quienesSomos">
               Nosotros
-            </Link>
-            <Link className={styleLink} to="/contacto">
-              Contacto
             </Link>
           </div>
       </div>

@@ -1,10 +1,10 @@
 import React from "react";
 
 import SolAmarillo from "../../../src/assets/Sol amarillo CTA.svg";
-
 import foto1 from "../../../src/assets/foto1 CTA.jpg";
 import foto2 from "../../../src/assets/foto2 CTA.jpg";
 import foto3 from "../../../src/assets/foto3 CTA.jpg";
+import flecha from "../../../src/assets/flecha.svg";
 
 const CTA = () => {
   return (
@@ -63,7 +63,12 @@ const CTA = () => {
             </div>
           </div>
         </div>
-
+        <div className="absolute top-[30rem] left-[41rem]">
+          <img className="black" src={flecha}></img>
+        </div>
+        <div className="absolute top-[30rem] left-[41rem]">
+          <img className="" src={flecha}></img>
+        </div>
         <div className="absolute w-[37rem] z-[0]">
           <div className="relative">
             <img

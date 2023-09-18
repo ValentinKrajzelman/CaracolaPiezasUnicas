@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
+import tira from "../../assets/tira.svg";
+
 import { ArrowUpRightIcon } from "@heroicons/react/20/solid";
 
 const estiloTodos =
@@ -110,6 +112,9 @@ const VentanaNoticias = ({ noticias, eventos }) => {
           </div>
           <div className="absolute w-[83rem] h-[38rem] border-2 z-40 border-black top-[0.3rem] left-[0.3rem] bg-[#BF9AF3] "></div>
           <div className="absolute w-[83rem] h-[38rem] border-2 z-30 border-black top-[0.6rem] left-[0.6rem] bg-[#BF9AF3] "></div>
+          <div className="movimiento-diagonal">
+            <img src={tira} className="w-full h-full rotate-[-6deg]"></img>
+          </div>
         </div>
       </div>
     </div>

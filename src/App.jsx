@@ -8,7 +8,9 @@ import Eventos from "./componentes/eventos/eventos";
 import Talleres from "./componentes/talleres/index";
 import Noticias from "./componentes/noticias/noticias";
 import Dashboard from "./componentes/dashboard/index";
+import QuienesSomos from "./componentes/quienesSomos/quienesSomos";
 import PiePag from "./componentes/PiePag";
+
 
 import { useSelector, useDispatch } from "react-redux";
 
@@ -25,11 +27,12 @@ const App = () => {
   }, []);
 
   return (
-    <div className="pb-10 bg-[#F7F5DD] font-principal">
+    <div className="pb-10 bg-[#F7F5DD] font-principal overflow-hidden">
       <Navbar />
       <Routes>
         <Route path="/" element={<Inicio />}></Route>
         <Route path="/eventos/*" element={<Eventos />}></Route>
+        <Route path="/quienesSomos/*" element={<QuienesSomos />}></Route>
         <Route path="/talleres/*" element={<Talleres />}></Route>
         <Route path="/noticias/*" element={<Noticias />}></Route>
         <Route path="/dashboard/*" element={<Dashboard />}></Route>

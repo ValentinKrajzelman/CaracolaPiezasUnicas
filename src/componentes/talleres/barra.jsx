@@ -1,47 +1,37 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { ArrowUpRightIcon } from "@heroicons/react/20/solid";
 
-// aca la idea es armar la lista con lo saques del state y que tenga un thumbnail, un titulo y el link al final para saltar al taller nada mas,
-// saca el view all y hacelo que tenga un largo maximo, ademas en cel deberia cargarse un componente diferente que sea una navbar que se oculta
-
-const Barra = () => {
-  const talleres = useSelector((state) => state.talleres.talleres);
-
+const Barra = ({ talleres, cambiarTaller }) => {
   return (
     <div>
-      {talleres.length == 0 ? (
-        console.log("cargando")
-      ) : (
+      <div className="bg-[#BF9AF3] mx-[1rem] border-2 border-black w-[20rem]">
+        <div className="p-2 text-5xl font-medium mb-5">Talleres</div>
         <div>
-          <ul role="list" className="divide-y divide-gray-100">
-            {talleres.map((taller) => (
-              <li
-                key={taller._id}
-                className="flex items-center justify-between gap-x-6 py-5"
+          {talleres.map((taller) => (
+            <div
+              key={taller._id}
+              className="flex items-center justify-between bg-[#F7F5DD] h-[4.5rem] p-2 m-[0.5rem] border-[1px] border-black"
+            >
+              <div className="flex flex-col justify-between">
+                <p className="text-md mb-2">
+                  {taller.nombre}
+                </p>
+                <p className="text-xs ">
+                  {taller.createdAt.slice(0, 10)}
+                </p>
+              </div>
+              <button
+                className="flex w-[2rem] h-[3.6rem] justify-center items-center border-2 border-black bg-[#9BDEAC]"
+                onClick={() => {
+                  cambiarTaller(taller._id);
+                }}
               >
-                <div className="flex gap-x-4">
-                  <img
-                    className="h-12 w-12 flex-none rounded-full bg-gray-50"
-                    src={taller.URL}
-                    alt=""
-                  />
-                  <div className="min-w-0 flex-auto">
-                    <p className="text-sm font-semibold leading-6 text-gray-900">
-                      {taller.nombre}
-                    </p>
-                  </div>
-                </div>
-                <a
-                  href={"talleres/?id=" + taller._id}
-                  className="rounded-full bg-white px-2.5 py-1 text-xs font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
-                >
-                  View
-                </a>
-              </li>
-            ))}
-          </ul>
+                <ArrowUpRightIcon className="w-5" />
+              </button>
+            </div>
+          ))}
         </div>
-      )}
+      </div>
     </div>
   );
 };

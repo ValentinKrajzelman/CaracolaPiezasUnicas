@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import tira from "../../assets/tira.svg"
+
 import { ArrowUpRightIcon } from "@heroicons/react/20/solid";
 
 const estiloTodos =
@@ -73,6 +75,9 @@ const Talleres = ({ talleres }) => {
             </div>
           </div>
           <div className="absolute top-[0.3rem] left-[0.3rem] z-30 w-full h-full  border-2 border-black bg-[#BF9AF3] "></div>
+          <div className="movimiento-diagonal">
+            <img src={tira} className="w-full h-full rotate-[-6deg]"></img>
+          </div>
         </div>
       </div>
     </div>

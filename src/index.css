@@ -2,12 +2,56 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @keyframes spin {
-    0% { transform: rotate(0); }
-    100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0);
   }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 
-  .custom-spin {
-    animation: spin 45s linear infinite; /* Adjust the animation duration and timing function */
+.custom-spin {
+  animation: spin 45s linear infinite; /* Adjust the animation duration and timing function */
+}
+
+/* @keyframes diagonalMove {
+  0% {
+    transform: translate(0, 0);
   }
+  100% {
+    transform: translate(calc(150rem * cos(-6deg)), calc(150rem * sin(-6deg)));
+  }
+}
+
+.movimiento-diagonal {
+  animation: diagonalMove 5s linear infinite;
+  width: 330rem;
+  height: 50rem;
+  bottom: -34rem;
+  left: -158.9rem;
+  position: absolute;
+  transform-origin: bottom left;
+  transform: rotate(-6deg);
+  animation: diagonalMove 4s linear infinite;
+} */
+
+@keyframes diagonalMove {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(calc(250rem * cos(-6deg)), calc(250rem * sin(-6deg)));
+  }
+}
+
+.movimiento-diagonal {
+  width: 600rem;
+  /* height: 50rem; */
+  bottom: -19rem;
+  left: -364.9rem;
+  position: absolute;
+  transform-origin: bottom left;
+  transform: rotate(-6deg);
+  animation: diagonalMove 20s linear infinite;
+}

@@ -7,6 +7,7 @@ import CTA from "./CTA";
 import VentanaNoticias from "./ventanaNoticias";
 import Talleres from "./talleres";
 import Hogares from "./hogares";
+import Contacto from "./contacto";
 
 import { Link } from "react-router-dom";
 import { ArrowUpRightIcon } from "@heroicons/react/20/solid";
@@ -26,6 +27,7 @@ const Inicio = () => {
           <VentanaNoticias noticias={noticias} eventos={eventos} />
           <Talleres talleres={talleres} />
           <Hogares />
+          <Contacto/>
         </div>
       )}
     </div>
