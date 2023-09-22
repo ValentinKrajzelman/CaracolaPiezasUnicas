@@ -63,12 +63,12 @@ const CTA = () => {
             </div>
           </div>
         </div>
-        <div className="absolute top-[30rem] left-[41rem]">
+        {/* <div className="absolute top-[30rem] left-[41rem]">
           <img className="black" src={flecha}></img>
         </div>
         <div className="absolute top-[30rem] left-[41rem]">
           <img className="" src={flecha}></img>
-        </div>
+        </div> */}
         <div className="absolute w-[37rem] z-[0]">
           <div className="relative">
             <img

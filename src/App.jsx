@@ -4,9 +4,9 @@ import { Route, Routes } from "react-router-dom";
 
 import Navbar from "./componentes/navbar";
 import Inicio from "./componentes/inicio/inicio";
-import Eventos from "./componentes/eventos/eventos";
+import Eventos from "./componentes/eventos/index";
 import Talleres from "./componentes/talleres/index";
-import Noticias from "./componentes/noticias/noticias";
+import Noticias from "./componentes/noticias/index";
 import Dashboard from "./componentes/dashboard/index";
 import QuienesSomos from "./componentes/quienesSomos/quienesSomos";
 import PiePag from "./componentes/PiePag";
