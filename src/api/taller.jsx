@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const url = 'http://localhost:5000/talleres/';
+const url = 'http://caracola.ar/talleres/';
 
 export const ApigetTalleres = () => axios.get(url);
 export const ApicreateTalleres = (newTaller) => axios.post(url, newTaller);
