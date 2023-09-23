@@ -4,13 +4,13 @@ import { useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import Barra from "./barra";
-import Taller from "./taller";
+import Noticia from "./noticia";
 
-const Talleres = () => {
+const Noticias = () => {
   
-  const talleres = useSelector((state) => state.talleres.talleres);
+  const noticias = useSelector((state) => state.noticias.noticias);
 
-  const [taller, setTaller] = useState(null);
+  const [noticia, setNoticia] = useState(null);
 
   useEffect(() => {
     var urlParams = new URLSearchParams(window.location.search);
@@ -18,26 +18,26 @@ const Talleres = () => {
 
     console.log(id);
 
-    setTaller(
-      id != 0 ? talleres.find((taller) => taller._id == id) : talleres[0]
+    setNoticia(
+      id != 0 ? noticias.find((noticia) => noticia._id == id) : noticias[0]
     );
-  }, [talleres]);
+  }, [noticias]);
 
-  const cambiarTaller = (id) => {
-    setTaller(
-      id != 0 ? talleres.find((taller) => taller._id == id) : talleres[0]
+  const cambiarNoticia = (id) => {
+    setNoticia(
+      id != 0 ? noticias.find((noticia) => noticia._id == id) : noticias[0]
     );
   };
 
   return (
     <div className="my-[3rem]">
-      {!taller ? (
+      {!noticia ? (
         console.log("cargando")
       ) : (
         <div>
           <div className="flex">
-            <Barra talleres={talleres} cambiarTaller={cambiarTaller}/>
-            <Taller taller={taller}/>
+            <Barra noticias={noticias} cambiarNoticia={cambiarNoticia}/>
+            <Noticia noticia={noticia}/>
           </div>
         </div>
       )}
@@ -45,4 +45,4 @@ const Talleres = () => {
   );
 };
 
-export default Talleres;
+export default Noticias;

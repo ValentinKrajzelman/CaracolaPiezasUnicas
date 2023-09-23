@@ -4,13 +4,13 @@ import { useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import Barra from "./barra";
-import Taller from "./taller";
+import Evento from "./evento";
 
-const Talleres = () => {
+const Eventos = () => {
   
-  const talleres = useSelector((state) => state.talleres.talleres);
+  const eventos = useSelector((state) => state.eventos.eventos);
 
-  const [taller, setTaller] = useState(null);
+  const [evento, setEvento] = useState(null);
 
   useEffect(() => {
     var urlParams = new URLSearchParams(window.location.search);
@@ -18,26 +18,26 @@ const Talleres = () => {
 
     console.log(id);
 
-    setTaller(
-      id != 0 ? talleres.find((taller) => taller._id == id) : talleres[0]
+    setEvento(
+      id != 0 ? eventos.find((evento) => evento._id == id) : eventos[0]
     );
-  }, [talleres]);
+  }, [eventos]);
 
-  const cambiarTaller = (id) => {
-    setTaller(
-      id != 0 ? talleres.find((taller) => taller._id == id) : talleres[0]
+  const cambiarEvento = (id) => {
+    setEvento(
+      id != 0 ? eventos.find((evento) => evento._id == id) : eventos[0]
     );
   };
 
   return (
     <div className="my-[3rem]">
-      {!taller ? (
+      {!evento ? (
         console.log("cargando")
       ) : (
         <div>
           <div className="flex">
-            <Barra talleres={talleres} cambiarTaller={cambiarTaller}/>
-            <Taller taller={taller}/>
+            <Barra eventos={eventos} cambiarEvento={cambiarEvento}/>
+            <Evento evento={evento}/>
           </div>
         </div>
       )}
@@ -45,4 +45,4 @@ const Talleres = () => {
   );
 };
 
-export default Talleres;
+export default Eventos;

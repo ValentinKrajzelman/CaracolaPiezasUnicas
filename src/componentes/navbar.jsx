@@ -17,6 +17,9 @@ const Navbarr = () => {
           </Link>
         </div>
           <div className="flex justify-between w-full pl-28 pr-16">
+            <Link className={styleLink} to="/">
+              Inicio
+            </Link>
             <Link className={styleLink} to="/talleres/?id=0">
               Talleres
             </Link>
