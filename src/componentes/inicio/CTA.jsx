@@ -1,10 +1,11 @@
 import React from "react";
 
-import SolAmarillo from "../../../src/assets/Sol amarillo CTA.svg";
-import foto1 from "../../../src/assets/foto1 CTA.jpg";
-import foto2 from "../../../src/assets/foto2 CTA.jpg";
-import foto3 from "../../../src/assets/foto3 CTA.jpg";
-import flecha from "../../../src/assets/flecha.svg";
+import SolAmarillo from "/solamarilloCTA.svg";
+
+import foto1 from "/foto1CTA.jpg";
+import foto2 from "/foto2CTA.jpg";
+import foto3 from "/foto3CTA.jpg";
+import flecha from "/flecha.svg";
 
 const CTA = () => {
   return (
@@ -71,8 +72,9 @@ const CTA = () => {
         </div> */}
         <div className="absolute w-[37rem] z-[0]">
           <div className="relative">
-            <img
-              className="custom-spin absolute z-20 top-[5.5rem] left-[0.17rem] h-[28rem]"
+            
+            <img className="custom-spin absolute z-20 top-[5.5rem] left-[0.17rem] h-[28rem]"
+              
               src={SolAmarillo}
             ></img>
           </div>

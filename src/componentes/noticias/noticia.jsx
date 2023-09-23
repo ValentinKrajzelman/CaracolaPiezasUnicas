@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import SolAmarillo from "../../../src/assets/Sol amarillo CTA.svg";
+import SolAmarillo from "/solamarilloCTA.svg";
 
 const Noticia = ({ noticia }) => {
   return (

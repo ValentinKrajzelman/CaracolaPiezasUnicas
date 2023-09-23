@@ -2,7 +2,7 @@ import React from "react";
 
 import Contacto from "../inicio/contacto";
 
-import euge from "../../assets/fotoEuge.jpg";
+import euge from "/fotoEuge.jpg";
 
 const QuienesSomos = () => {
   return (

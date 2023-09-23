@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import tira from "../../assets/tira.svg"
+import tira from "/tira.svg"
 
 import { ArrowUpRightIcon } from "@heroicons/react/20/solid";
 

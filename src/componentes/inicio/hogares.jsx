@@ -1,7 +1,7 @@
 import React from "react";
 
-import maps from "../../assets/mapsCC.png";
-import quienesSomos from "../../assets/quienesSomos.jpg";
+import maps from "/mapsCC.png";
+import quienesSomos from "/quienesSomos.jpg";
 
 const Hogares = () => {
   return (

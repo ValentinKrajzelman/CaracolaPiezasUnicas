@@ -3,7 +3,7 @@ import { AiFillFacebook, AiFillInstagram } from "react-icons/ai";
 import { Navbar } from "flowbite-react";
 import { Link } from "react-router-dom";
 
-import bannerNavbar from "../assets/bannerNavbar.png";
+import bannerNavbar from "/bannerNavbar.png";
 
 const styleLink = "text-xl  font-medium px-3 border-2 border-transparent hover:border-black hover:bg-[#9BDEAC] hover:underline";
 

@@ -9,7 +9,7 @@ import {
   BsLinkedin
 } from "react-icons/bs";
 
-import bannerNavbar from "../assets/bannerNavbar.png";
+import bannerNavbar from "/bannerNavbar.png";
 
 const PiePag = () => {
   return (

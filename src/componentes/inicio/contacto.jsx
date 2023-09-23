@@ -2,10 +2,10 @@ import React from "react";
 
 import TarjetaRedes from "./tarjetaRedes";
 
-import facebook from "../../assets/Facebook.png";
-import insta from "../../assets/Instagram.png";
-import wpp from "../../assets/Whatsapp.png";
-import solAmarilloSimple from "../../assets/solAmarilloSimple.svg";
+import facebook from "/Facebook.png";
+import insta from "/Instagram.png";
+import wpp from "/Whatsapp.png";
+import solAmarilloSimple from "/solAmarilloSimple.svg";
 
 const Contacto = () => {
   return (
