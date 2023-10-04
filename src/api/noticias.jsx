@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const url = 'http://caracola-ultimo-backend.vercel.app/noticias/';
+const url = 'https://caracola-ultimo-backend.vercel.app/noticias/';
 
 export const ApigetNoticias = () => axios.get(url);
 export const ApicreateNoticias = (newNoticia) => axios.post(url, newNoticia);
