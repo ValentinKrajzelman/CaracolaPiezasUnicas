@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const url = 'http://caracola.ar/eventos/';
+const url = 'http://caracola-ultimo-backend.vercel.app/eventos/';
 
 export const ApigetEventos = () => axios.get(url);
 export const ApicreateEventos = (newEvento) => axios.post(url, newEvento);
