@@ -5,6 +5,7 @@ import { Accordion, Label, TextInput, Card, Carousel } from "flowbite-react";
 import TarjetaCentros from "./tarjetaCentros";
 import CTA from "./CTA";
 import VentanaNoticias from "./ventanaNoticias";
+import VentanaNoticiasMobile from "./ventanaNoticiasMobile";
 import Talleres from "./talleres";
 import Hogares from "./hogares";
 import Contacto from "./contacto";
@@ -25,6 +26,7 @@ const Inicio = () => {
       ) : (
         <div>
           <VentanaNoticias noticias={noticias} eventos={eventos} />
+          <VentanaNoticiasMobile  noticias={noticias} eventos={eventos} />
           <Talleres talleres={talleres} />
           <Hogares />
           <Contacto/>

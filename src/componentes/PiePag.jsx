@@ -1,19 +1,21 @@
 import React from "react";
 import { Footer } from "flowbite-react";
+import { Link } from "react-router-dom";
 import {
   BsFacebook,
   BsInstagram,
   BsTwitter,
   BsGithub,
   BsDribbble,
-  BsLinkedin
+  BsLinkedin,
+  BsGear
 } from "react-icons/bs";
 
 import bannerNavbar from "/bannerNavbar.png";
 
 const PiePag = () => {
   return (
-    <div className="mt-[15rem]">
+    <div className="mt-0 md:mt-[15rem]">
       <Footer container={true} className="bg-opacity-0  shadow-none">
         <div className="w-full">
           <div className="flex w-full justify-center items-center ">
@@ -24,6 +26,9 @@ const PiePag = () => {
           <Footer.Divider />
           <div className="w-full sm:flex sm:items-center sm:justify-between">
             <Footer.Copyright href="#" by="Valentin Krajzelman" year={2023} />
+            <Link to="/dashboard/?tipo=0" >
+              <BsGear/>
+            </Link>
             <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center">
               <Footer.Icon href="#" icon={BsLinkedin} />
               <Footer.Icon href="#" icon={BsGithub} />

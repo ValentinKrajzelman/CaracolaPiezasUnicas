@@ -3,7 +3,7 @@ import { ArrowUpRightIcon } from "@heroicons/react/20/solid";
 
 const Barra = ({ noticias, cambiarNoticia }) => {
   return (
-    <div>
+    <div className="flex items-center justify-center">
       <div className="bg-[#BF9AF3] mx-[1rem] border-2 border-black w-[20rem]">
         <div className="p-2 text-5xl font-medium mb-5">Noticias</div>
         <div>

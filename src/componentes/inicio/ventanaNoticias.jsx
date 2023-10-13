@@ -12,7 +12,7 @@ const estiloTodosNegativo =
 
 const VentanaNoticias = ({ noticias, eventos }) => {
   return (
-    <div>
+    <div className="hidden md:block">
       <div className="flex justify-center">
         <div className="relative  mb-8 w-[83rem] h-[38rem]">
           <div className="absolute z-50">

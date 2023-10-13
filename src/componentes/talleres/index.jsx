@@ -35,9 +35,14 @@ const Talleres = () => {
         console.log("cargando")
       ) : (
         <div>
-          <div className="flex">
+          <div className="flex flex-col md:flex-row">
+
+            <div className="order-2 md:order-1">
             <Barra talleres={talleres} cambiarTaller={cambiarTaller}/>
+            </div>
+            <div className="order-1 md:order-2">
             <Taller taller={taller}/>
+            </div>
           </div>
         </div>
       )}

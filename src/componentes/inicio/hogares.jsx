@@ -10,11 +10,11 @@ const Hogares = () => {
         <div className="relative w-[70rem] h-[40rem]">
           <div className="absolute border-2 border-black w-full h-full z-20 bg-[#EF7E98]">
             <div className="h-[45%] w-full">
-              <div className="flex justify-center pt-2 text-5xl font-medium">
+              <div className="flex mb-16 md:mb-0 justify-center pt-2 text-5xl font-medium">
                 Los hogares
               </div>
-              <div className="flex justify-between align-middle items-center h-full">
-                <div className="flex flex-col ml-[5rem] mb-[3rem] items-center ">
+              <div className="flex flex-col md:flex-row justify-between md:justify-evenly align-middle items-center h-full">
+                <div className="flex flex-col mb-[3rem] items-center ">
                   <div className="flex items-center ">
                     <div className="text-lg">Hogar Padre Cajade</div>
                     <div className="pl-2">643 e/12 y 13</div>
@@ -26,7 +26,7 @@ const Hogares = () => {
                     ></img>
                   </div>
                 </div>
-                <div className="flex flex-col mr-[5rem] mb-[3rem] items-center ">
+                <div className="flex flex-col mb-[3rem] items-center ">
                   <div className="flex items-center ">
                     <div className="text-lg">Hogar Padre Cajade</div>
                     <div className="pl-2">643 e/12 y 13</div>
@@ -40,7 +40,7 @@ const Hogares = () => {
                 </div>
               </div>
             </div>
-            <div className="relative h-[55%] w-full">
+            <div className="hidden md:block relative h-[55%] w-full">
               <div className="absolute h-full w-[69.9rem] top-[-0.5rem] left-[-0.6rem] z-20 bg-[#BF9AF3] border-2 border-black">
                 <div className="flex justify-between">
                   <div className="flex flex-col ml-[5rem] mt-3 w-[30rem]">

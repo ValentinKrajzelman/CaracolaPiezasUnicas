@@ -35,9 +35,13 @@ const Noticias = () => {
         console.log("cargando")
       ) : (
         <div>
-          <div className="flex">
+          <div className="flex flex-col md:flex-row">
+          <div className="order-2 md:order-1">
             <Barra noticias={noticias} cambiarNoticia={cambiarNoticia}/>
+          </div>
+            <div className="order-1 md:order-2">
             <Noticia noticia={noticia}/>
+            </div>
           </div>
         </div>
       )}

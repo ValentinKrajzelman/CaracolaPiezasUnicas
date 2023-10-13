@@ -59,7 +59,7 @@ const Seleccion = () => {
         }}
       />
 
-      {!talleres[1] || !eventos[1] || !noticias[1] ? (
+      {!talleres[1] || !eventos[1] || !noticias[1] || !arr[1] ? (
         console.log("cargando")
       ) : (
         <div>
