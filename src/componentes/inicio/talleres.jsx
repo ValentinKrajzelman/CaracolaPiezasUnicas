@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import tira from "/tira.svg";
 
 import { ArrowUpRightIcon } from "@heroicons/react/20/solid";
+import removeHtmlTags from "../../lib/parseoHTML";
 
 const estiloTodos =
   " flex text-l font-medium w-[6rem] h-[3rem] justify-center items-center pl-[0.5rem] m-2 border-2 border-black bg-[#9BDEAC] underline";
@@ -11,6 +12,8 @@ const estiloTodosNegativo =
   "flex text-l font-medium w-[6rem] h-[3rem] justify-center items-center pl-[0.5rem] m-2 border-2 border-black bg-[#9BDEAC] underline bg-black absolute z-0 right-[-0.25rem] bottom-[-0.25rem]";
 
 const Talleres = ({ talleres }) => {
+
+
   return (
     <div>
       <div className="flex justify-center my-[10rem]">
@@ -29,10 +32,14 @@ const Talleres = ({ talleres }) => {
                         src={talleres[0].URL}
                       ></img>
                       <div className="h-[2rem] grow text-3xl p-2">
-                        {talleres[0].nombre}
+                      {talleres[0].nombre.length > 15
+                            ? removeHtmlTags(talleres[0].nombre).slice(0, 15) + "..."
+                            : removeHtmlTags(talleres[0].nombre).slice(0, 15)}
                       </div>
                       <div className="h-[7.5rem] px-2 overflow-hidden">
-                        {talleres[0].descripcion}
+                      {talleres[0].descripcion.length > 150
+                            ? removeHtmlTags(talleres[0].descripcion).slice(0, 150) + "..."
+                            : removeHtmlTags(talleres[0].descripcion).slice(0, 150)}
                       </div>
                       <div className="flex justify-end">
                         <div className="relative h-[5rem]">
@@ -66,10 +73,14 @@ const Talleres = ({ talleres }) => {
                             src={taller.URL}
                           ></img>
                           <div className="h-[2rem] grow text-3xl p-2">
-                            {taller.nombre}
+                          {taller.nombre.length > 15
+                            ? removeHtmlTags(taller.nombre).slice(0, 15) + "..."
+                            : removeHtmlTags(taller.nombre).slice(0, 15)}
                           </div>
                           <div className="h-[7.5rem] px-2 overflow-hidden">
-                            {taller.descripcion}
+                          {taller.descripcion.length > 150
+                            ? removeHtmlTags(taller.descripcion).slice(0, 150) + "..."
+                            : removeHtmlTags(taller.descripcion).slice(0, 150)}
                           </div>
                           <div className="flex justify-end">
                             <div className="relative h-[5rem]">

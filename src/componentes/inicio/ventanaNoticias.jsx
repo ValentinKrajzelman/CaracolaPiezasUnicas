@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import tira from "/tira.svg";
+import removeHtmlTags from "../../lib/parseoHTML";
 
 import { ArrowUpRightIcon } from "@heroicons/react/20/solid";
 
@@ -32,9 +33,15 @@ const VentanaNoticias = ({ noticias, eventos }) => {
                     {/* recuadro noticia */}
                     <div className="absolute bottom-[-3rem] left-[-5rem] w-[22rem] h-[16rem] bg-[#F9D1FF] border-[1px] border-black">
                       <div className="relative w-full h-full">
-                        <div className="text-3xl p-2">{noticias.nombre}</div>
-                        <div className="text-sm p-2">
-                          {noticias.descripcion}
+                        <div className="text-3xl p-2 w-full">
+                          {noticias.nombre.length > 50
+                            ? removeHtmlTags(noticias.nombre).slice(0, 50) + "..."
+                            : removeHtmlTags(noticias.nombre).slice(0, 50)}
+                        </div>
+                        <div className="text-sm p-2 w-full h-[5rem]">
+                          {noticias.descripcion.length > 300
+                            ? removeHtmlTags(noticias.descripcion).slice(0, 300) + "..."
+                            : removeHtmlTags(noticias.descripcion).slice(0, 300)}
                         </div>
                         <div className="absolute z-20 bottom-[-2rem] left-[9rem]">
                           <Link
@@ -75,9 +82,16 @@ const VentanaNoticias = ({ noticias, eventos }) => {
                             {evento.fecha.slice(4, 11)}
                           </div>
                           <div className="flex flex-col justify-between grow px-3 ">
-                            <div className="">{evento.nombre}</div>
+                            <div className="">
+                            {evento.nombre.length > 50
+                            ? removeHtmlTags(evento.nombre).slice(0, 50) + "..."
+                            : removeHtmlTags(evento.nombre).slice(0, 50)}
+                              
+                            </div>
                             <div className="text-sm">
-                              {evento.descripcion.slice(4, 11)}
+                              {evento.descripcion.length > 35
+                            ? removeHtmlTags(evento.descripcion).slice(0, 35) + "..."
+                            : removeHtmlTags(evento.descripcion).slice(0, 35)}
                             </div>
                           </div>
                           <div className="relative w-[3rem]">
