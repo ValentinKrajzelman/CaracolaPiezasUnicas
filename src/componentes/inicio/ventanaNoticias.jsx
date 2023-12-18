@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import fotoDefault from "/default.svg";
 import { Link } from "react-router-dom";
 
 import tira from "/tira.svg";
@@ -27,7 +28,7 @@ const VentanaNoticias = ({ noticias, eventos }) => {
                     <div className="relative overflow-hidden w-[43rem] h-full">
                       <img
                         className="absolute top-0 left-0  w-[45rem] h-full"
-                        src={noticias.URL}
+                        src={fotoDefault}
                       ></img>
                     </div>
                     {/* recuadro noticia */}

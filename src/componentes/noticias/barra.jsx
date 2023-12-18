@@ -1,5 +1,7 @@
 import React from "react";
 import { ArrowUpRightIcon } from "@heroicons/react/20/solid";
+import removeHtmlTags from "../../lib/parseoHTML";
+
 
 const Barra = ({ noticias, cambiarNoticia }) => {
   return (
@@ -14,7 +16,9 @@ const Barra = ({ noticias, cambiarNoticia }) => {
             >
               <div className="flex flex-col justify-between">
                 <p className="text-md mb-2">
-                  {noticia.nombre}
+                  {noticia.nombre.length > 25
+                    ? removeHtmlTags(noticia.nombre).slice(0, 25) + "..."
+                    : removeHtmlTags(noticia.nombre).slice(0, 25)}
                 </p>
                 <p className="text-xs ">
                   {noticia.createdAt.slice(0, 10)}

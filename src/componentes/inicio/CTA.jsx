@@ -2,10 +2,11 @@ import React from "react";
 
 import SolAmarillo from "/solamarilloCTA.svg";
 
-import foto1 from "/foto1CTA.jpg";
-import foto2 from "/foto2CTA.jpg";
-import foto3 from "/foto3CTA.jpg";
-import flecha from "/flecha.svg";
+import fotoDefault from "/default.svg";
+// import foto1 from "/foto1CTA.jpg";
+// import foto2 from "/foto2CTA.jpg";
+// import foto3 from "/foto3CTA.jpg";
+// import flecha from "/flecha.svg";
 
 const CTA = () => {
   return (
@@ -31,8 +32,8 @@ const CTA = () => {
               <div className="absolute h-full w-full border-[1px] md:border-[6px] z-[1] border-black overflow-hidden rounded-tr-[999px] rounded-tl-[999px] rounded-br-[0px] rounded-bl-[999px]">
                 <div className="relative">
                   <img
-                    className="absolute left-[0rem] top-[-2rem] h-[35rem] w-[33rem] max-w-none"
-                    src={foto3}
+                    // className="absolute left-[0rem] top-[-2rem] h-[35rem] w-[33rem] max-w-none"
+                    src={fotoDefault}
                   ></img>
                 </div>
               </div>
@@ -44,8 +45,8 @@ const CTA = () => {
               <div className="absolute h-full w-full border-[1px] md:border-[6px] z-[1] border-black overflow-hidden rounded-tr-[0px] rounded-tl-[999px] rounded-br-[999px] rounded-bl-[999px]">
                 <div className="relative">
                   <img
-                    className="absolute left-[0rem] top-[-5rem] h-[20rem] max-w-none "
-                    src={foto2}
+                    // className="absolute left-[0rem] top-[-5rem] h-[20rem] max-w-none "
+                    src={fotoDefault}
                   ></img>
                 </div>
               </div>
@@ -55,8 +56,8 @@ const CTA = () => {
               <div className="absolute h-full w-full border-[1px] md:border-[6px] z-[1] border-black overflow-hidden rounded-tr-[999px] rounded-tl-[0px] rounded-br-[999px] rounded-bl-[999px]">
                 <div className="relative">
                   <img
-                    className="absolute left-[-4rem] h-[24rem] max-w-none "
-                    src={foto1}
+                    // className="absolute left-[-4rem] h-[24rem] max-w-none "
+                    src={fotoDefault}
                   ></img>
                 </div>
               </div>

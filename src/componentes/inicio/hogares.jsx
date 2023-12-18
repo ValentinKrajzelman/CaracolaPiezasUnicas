@@ -1,7 +1,8 @@
 import React from "react";
 
 import maps from "/mapsCC.png";
-import quienesSomos from "/quienesSomos.jpg";
+// import quienesSomos from "/quienesSomos.jpg";
+import fotoDefault from "/default.svg";
 
 const Hogares = () => {
   return (
@@ -47,7 +48,7 @@ const Hogares = () => {
                     <div className="text-4xl mb-10">Cosas que expliquen lo que se hace en los hogares</div>
                     <div className="">Cosas que expliquen lo que se hace en los hogaresCosas que expliquen lo que se hace en los hogaresCosas que expliquen lo que se hace en los hogaresCosas que expliquen lo que se hace en los hogaresCosas que expliquen lo que se hace en los hogaresCosas que expliquen lo que se hace en los hogaresCosas que expliquen lo que se hace en los hogares</div>
                   </div>
-                  <div className="relative w-[20rem] mr-[5rem] mt-3"><img className="absolute w-[20rem]" src={quienesSomos}></img></div>
+                  <div className="relative w-[20rem] mr-[5rem] mt-3"><img className="absolute w-[20rem]" src={fotoDefault}></img></div>
                 </div>
               </div>
               <div className="absolute h-full w-[69.9rem] top-[-0.2rem] left-[-0.3rem] z-10 bg-[#BF9AF3] border-2 border-black"></div>

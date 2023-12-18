@@ -1,5 +1,6 @@
 import React from "react";
 import { ArrowUpRightIcon } from "@heroicons/react/20/solid";
+import removeHtmlTags from "../../lib/parseoHTML";
 
 const Barra = ({ eventos, cambiarEvento }) => {
   return (
@@ -14,11 +15,11 @@ const Barra = ({ eventos, cambiarEvento }) => {
             >
               <div className="flex flex-col justify-between">
                 <p className="text-md mb-2">
-                  {evento.nombre}
+                  {evento.nombre.length > 25
+                    ? removeHtmlTags(evento.nombre).slice(0, 25) + "..."
+                    : removeHtmlTags(evento.nombre).slice(0, 25)}
                 </p>
-                <p className="text-xs ">
-                  {evento.createdAt.slice(0, 10)}
-                </p>
+                <p className="text-xs ">{evento.createdAt.slice(0, 10)}</p>
               </div>
               <button
                 className="flex w-[2rem] h-[3.6rem] justify-center items-center border-2 border-black bg-[#9BDEAC]"

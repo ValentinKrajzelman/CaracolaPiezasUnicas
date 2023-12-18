@@ -1,8 +1,8 @@
 import React from "react";
-
+import fotoDefault from "/default.svg";
 import Contacto from "../inicio/contacto";
 
-import euge from "/fotoEuge.jpg";
+// import euge from "/fotoEuge.jpg";
 
 const QuienesSomos = () => {
   return (
@@ -14,7 +14,7 @@ const QuienesSomos = () => {
               <div className="p-2 text-5xl font-medium mb-5">
                 Quienes Somos?
               </div>
-              <img className="h-[23rem] w-[23rem] m-5" src={euge}></img>
+              <img className="h-[23rem] w-[23rem] m-5" src={fotoDefault}></img>
             </div>
           </div>
           <div className="absolute z-40 bottom-[0.6rem] right-[0.6rem] w-[18rem] h-[15rem] bg-[#EF7E98] border-2 border-black">

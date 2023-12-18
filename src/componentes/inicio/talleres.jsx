@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import fotoDefault from "/default.svg";
 import tira from "/tira.svg";
 
 import { ArrowUpRightIcon } from "@heroicons/react/20/solid";
@@ -29,7 +29,7 @@ const Talleres = ({ talleres }) => {
                     <div className="flex flex-col h-full">
                       <img
                         className="p-1 h-[8rem] w-full"
-                        src={talleres[0].URL}
+                        src={fotoDefault}
                       ></img>
                       <div className="h-[2rem] grow text-3xl p-2">
                       {talleres[0].nombre.length > 15
@@ -70,7 +70,7 @@ const Talleres = ({ talleres }) => {
                         <div className="flex flex-col h-full">
                           <img
                             className="p-1 h-[8rem] w-full"
-                            src={taller.URL}
+                            src={fotoDefault}
                           ></img>
                           <div className="h-[2rem] grow text-3xl p-2">
                           {taller.nombre.length > 15
